@@ -14,6 +14,22 @@ class Hello_logic():
         with nv.listen((None, None, 500, 'AND'), entities=ent_list) as r:
             nv.say('hello_main')
         return r
+###############################################################################
+        tail_count = nn.counter('tail_count')
+        nn.env('result', 'сброс на приветствии')
+        with nv.listen((None, None, 500, 'AND'), entities=ent_list) as r:
+            tail_count = nn.counter('tail_count', '+')
+            nv.say('hello_main')
+
+        if not r and tail_count == 1:
+
+            tail_count = nn.counter('tail_count', '+')
+            if not r and tail_count == 2:
+                nn.log('condition', 'NULL')
+                return HU.hangup_null(ent_list)
+
+            nn.log('condition', 'NULL')
+            return self.hello_null(r, ent_list)
 
     def hello_null(self, r, ent_list):
         if not r:
@@ -41,6 +57,7 @@ class Hello_logic():
 
 
     def hello_repeat(self, ent_list):
+
         with nv.listen((None, None, 500, 'AND'), entities=ent_list) as r:
             nn.log('condition', 'confirm=true')
             nv.say('hello_repeat')
