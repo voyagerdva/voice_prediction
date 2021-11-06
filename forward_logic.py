@@ -6,6 +6,7 @@ class Forward_logic():
     def __init__(self):
         pass
 
+
     def forward(self):
         nn.log('condition', 'prediction=false')
         nv.say('forward')

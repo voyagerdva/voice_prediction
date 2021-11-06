@@ -36,6 +36,7 @@ class Recommend_logic():
             nn.log('condition', 'repeat=false')
             return HL.hello_repeat(r)
 
+
     def recommend_default(self, ent_list):
         with nv.listen((None, None, 500, 'AND'), entities=ent_list) as r:
             nv.say('recommend_default')
@@ -55,6 +56,7 @@ class Recommend_logic():
         if r.has_entity('voicemail') and r.entity('question') == 'true':
             nn.log('condition', 'question=true')
             return FWD.forward(r)
+
 
     def recommend_null(self, r):
         if r.has_entity('voicemail') and r.entity('recommendation') == 'positive':
@@ -106,4 +108,3 @@ class Recommend_logic():
             nn.log('condition', 'repeat=true')
             nv.say('recommend_score_positive')
             return self.recommend_score_neutral(r)
-

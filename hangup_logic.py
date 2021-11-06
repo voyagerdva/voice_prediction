@@ -17,12 +17,10 @@ class Hangup_logic():
         nv.say('hangup_wrong_time')
         nv.hangup()
 
-
     def hangup_positive(self):
         nn.log('condition', 'prediction=false')
         nv.say('hangup_positive')
         nv.hangup()
-
 
     def hangup_negative(self):
         nn.log('condition', 'prediction=false')

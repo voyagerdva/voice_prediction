@@ -9,13 +9,10 @@ class Hello_logic():
     def __init__(self):
         pass
 
+
     def hello_main(self, ent_list):
-        nn.env('result', 'сброс на приветствии')
-        with nv.listen((None, None, 500, 'AND'), entities=ent_list) as r:
-            nv.say('hello_main')
-        return r
-###############################################################################
         tail_count = nn.counter('tail_count')
+
         nn.env('result', 'сброс на приветствии')
         with nv.listen((None, None, 500, 'AND'), entities=ent_list) as r:
             tail_count = nn.counter('tail_count', '+')
@@ -30,6 +27,7 @@ class Hello_logic():
 
             nn.log('condition', 'NULL')
             return self.hello_null(r, ent_list)
+
 
     def hello_null(self, r, ent_list):
         if not r:
